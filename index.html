@@ -1,0 +1,39 @@
+<html>
+<head>
+	<meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>The Joy of Scrolling</title>
+	<meta name="description" content="Scroll down for quotes from Bob Ross">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
+	<script src="./src/app.js" type="text/javascript"></script>
+	<link type="text/css" rel="stylesheet" href="./src/site.css" />
+	
+	<script type="text/javascript">
+		// the number of images in the sequence of image files
+		totalFrames = 94;
+		$(document).ready(function() {
+			// adjust the size of video placeholder image to fit the screen and keep aspect ratio
+			resizeAdjustments();
+		});
+	</script>
+
+</head>
+<body onload="resizeAdjustments();" onresize="resizeAdjustments();" onorientationchange="resizeAdjustments();">
+
+	<!-- placeholder image for video (required) -->
+	<img id="video" src="./pics/000000.png" alt="" />
+	
+	<!-- preload the video frames (required) -->
+	<script type="text/javascript">
+		// image filenames in frames folder should be "000000.png" through "000093.png"
+		for(i = 0; i < totalFrames; i++) { // loop for each image in sequence
+			images[i] =  new Image(); // add image object to array
+			images[i].src = "./pics/"+pad(i, 6)+".png"; // set the source of the image object
+		}
+	</script>
+	<div id="quoteSection" class="visible">Scroll Down</div>
+	<script src="./src/quotes.js" type="text/javascript"></script>
+
+</body>
+</html>
