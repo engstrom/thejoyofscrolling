@@ -5,21 +5,20 @@ var scrollPos; // scroll position of the window
 var totalFrames = 99; // the number of images in the sequence of JPEG files
 
 // reduce CPU consumption, improve performance and make this possible
-window.requestAnimFrame = (function(){
+window.requestAnimFrame = (function() {
   return  window.requestAnimationFrame   || 
 		  window.webkitRequestAnimationFrame || 
 		  window.mozRequestAnimationFrame    || 
 		  window.oRequestAnimationFrame      || 
 		  window.msRequestAnimationFrame     || 
-		  function( callback ){
-			window.setTimeout(callback, 1000 / 60);
+		  function(callback) {
+			  window.setTimeout(callback, 1000 / 60);
 		  };
 })();
 
-(function animloop(){ // the smoothest animation loop possible
+(function animloop() { // the smoothest animation loop possible
   requestAnimFrame(animloop);
-  targetStep = Math.max( Math.round( getYOffset() / 30 ) , 1 ); // what frame to animate to
-  
+  targetStep = Math.max(Math.round(getYOffset()/30),1); // what frame to animate to
   // increment the step until we arrive at the target step
   if (targetStep != step) {
   	step += (targetStep - step) / 5; 
@@ -42,12 +41,12 @@ function changeFrame() {
 function resizeAdjustments() {
 	// increase the height of the document 30 pixels for every frame in the JPEG sequence
 	$('html, body').css('height',(totalFrames*30)+'px');
-	var image_width   = $('#video').css('width').replace('px','');
-	var image_height  = $('#video').css('height').replace('px','');
-	var height_ratio  = image_height / document.body.clientHeight;
-	var width_ratio   = image_width / document.body.clientWidth;
+	var image_width = $('#video').css('width').replace('px','');
+	var image_height = $('#video').css('height').replace('px','');
+	var height_ratio = image_height / window.innerHeight;
+  var width_ratio = image_width / window.innerWidth;
 	
-	if (height_ratio < width_ratio) {
+  if (height_ratio < width_ratio) {
 		// reposition the video image
 		$('#video').css('top',0);
 		// calculate the difference we need to accomodate for
