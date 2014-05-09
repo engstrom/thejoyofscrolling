@@ -22,21 +22,16 @@ img#video {
 	bottom: 50px;
 	left: 10%;
 	right: 10%;
+  font-size: 2.0em;
+  line-height: 1em;
+  text-align: center;
+  font-weight: bold;
+  color: white;
+  -webkit-text-stroke: .5px black;
 }
 
 #quoteSection.visible {
   visibility: visible;
   opacity: 1;
   z-index:2;
-  position: fixed;
-	width: auto;
-	bottom: 50px;
-	left: 10%;
-	right: 10%;
-  font-size: 3em;
-  line-height: 1em;
-  text-align: center;
-  font-weight: bold;
-  color: white;
-  -webkit-text-stroke: .5px black;
 }
